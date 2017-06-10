@@ -73,7 +73,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     # Ambiguity implementation
 
     df = float(F) / float(K) / float(m_basic)
-    r = np.ceil(sr * (N + 1) / float(T) / float(m_basic))
+    r = int(np.ceil(sr * (N + 1) / float(T) / float(m_basic)))
 
     if r == 1:
         dt = 1
@@ -146,7 +146,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     fig_1 = plt.figure(1, figsize=figsize)
 
     plt.clf()
-    plt.hold(False)
+    #plt.hold(False)
 
     axes1 = plt.subplot(3, 1, 1)
     zerovec = np.array([[0]])
@@ -282,7 +282,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
 
     plt.clf()
 
-    plt.hold(False)
+    #plt.hold(False)
 
     ax3d = plt.subplot(111, projection='3d')
 
@@ -297,7 +297,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
         ax3d.plot_surface(mesh_x, mesh_y, mesh_z,
                           linewidth=0, cmap=cm.coolwarm)
 
-    plt.hold(True)
+    #plt.hold(True)
 
     x_coords = delay
     y_coords = np.array([[0, 0]]).T
@@ -321,7 +321,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     ax3d.set_zlabel(' $|\\it\\chi(\\it\\tau,\\it\\nu)|$ ',
                     fontsize=12)
 
-    plt.hold(False)
+    #plt.hold(False)
 
     fig_2.suptitle(plot_title + ', 3-D Plot')
 
