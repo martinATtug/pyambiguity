@@ -48,7 +48,10 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
               plot_format="svg",
               plot_mesh=True,
               elev=50,
-              azim=-135):
+              azim=-135,
+              figsize=None,
+              plot_grid=False,
+              ):
     """ Compute Ambiguity & generate Plots for given input parameters
     Params:
     -------
