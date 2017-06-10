@@ -184,7 +184,8 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     axes3.set_ylabel(' $\\itf*Mt_b$ ')
     plt.grid(plot_grid)
 
-    fig_1.suptitle(plot_title + ', 2-D Plot')
+    if plot_title:
+        fig_1.suptitle(plot_title + ', 2-D Plot')
 
     if plot1_file is not None:
         fig_1.savefig(plot1_file, format=plot_format)
@@ -323,7 +324,8 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
 
     #plt.hold(False)
 
-    fig_2.suptitle(plot_title + ', 3-D Plot')
+    if plot_title:
+        fig_2.suptitle(plot_title + ', 3-D Plot')
 
     if plot2_file is not None:
         fig_2.savefig(plot2_file, format=plot_format)
