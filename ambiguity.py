@@ -29,7 +29,10 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
               plot_format="svg",
               plot_mesh=True,
               elev=50,
-              azim=-135):
+              azim=-135,
+              figsize=None,
+              plot_grid=False,
+              ):
     """ Compute Ambiguity & generate Plots for given input parameters
     Params:
     -------
@@ -138,7 +141,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     dphas = np.multiply(temp, float(r) / 2. / np.pi)
 
 
-    fig_1 = plt.figure(1)
+    fig_1 = plt.figure(1, figsize=figsize)
 
     plt.clf()
     plt.hold(False)
@@ -157,6 +160,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     axes1.set_ylabel(' $Amplitude$ ')
     #axes1.set_xlim(-np.inf, np.inf)
     #axes1.set_ylim(-np.inf, np.amax(abs_uamp) + 0.05*np.amax(abs_uamp));
+    plt.grid(plot_grid)
 
     axes2 = plt.subplot(3, 1, 2)
     axes2.plot(t.flatten(),
@@ -166,6 +170,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
 
     # plt.axis(np.array([-np.inf, np.inf, -np.inf, np.inf]))
     axes2.set_ylabel(' $Phase [rad]$ ')
+    plt.grid(plot_grid)
 
     axes3 = plt.subplot(3, 1, 3)
     axes3.plot(t.flatten(),
@@ -175,6 +180,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     # plt.axis(np.array([-np.inf, np.inf, -np.inf, np.inf]))
     axes3.set_xlabel(' $\\itt/t_b$ ')
     axes3.set_ylabel(' $\\itf*Mt_b$ ')
+    plt.grid(plot_grid)
 
     fig_1.suptitle(plot_title + ', 2-D Plot')
 
@@ -234,7 +240,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     e_sparse = scipy.sparse.csc_matrix(e)
     # e_trans = e_sparse.transpose(True)
     # e_dot_uu_pos_dash = (uu_pos_dash_trans.dot(e_trans)).transpose(True)
-    e_dot_uu_pos_dash = e_sparse.dot(uu_pos.conj().transpose(True))
+    e_dot_uu_pos_dash = e_sparse.dot(uu_pos.conj().transpose())
     a_pos = np.abs(e_dot_uu_pos_dash.toarray())
 
     a_pos = a_pos / np.amax(np.amax(a_pos))
@@ -270,7 +276,7 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     # cm = np.zeros((64, 3))
     # cm[:,2] = np.reshape(np.ones((64, 1)), (64,))
 
-    fig_2 = plt.figure(2)
+    fig_2 = plt.figure(2, figsize=figsize)
 
     plt.clf()
 
