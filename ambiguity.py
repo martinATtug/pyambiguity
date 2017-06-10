@@ -56,6 +56,8 @@ def ambiguity(u_basic=DEFAULT_SIGNAL,
     surface.
     elev: float.(default=50) Elevation for 3-D plot viewpoint.
     azim: float.(default=-135) Azimuth in degrees for 3-D plot viewpoint.
+    figsize: figure size (width, height) in inches.
+    plot_grid: bool (default=False) to control grid lines in 2d-plot.
 
     Returns:
     --------
